@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#5A8FCC">
+<title>肩こり改善 30日実践特典</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff;color:#222;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",sans-serif;line-height:1.7;-webkit-text-size-adjust:100%}
+body{padding:16px;max-width:760px;margin:0 auto;font-size:16px}
+
+h1{font-size:1.5rem;margin:0 0 6px;color:#1F4E8C;font-weight:700;letter-spacing:0.01em}
+h2{font-size:1.15rem;margin:32px 0 12px;padding:10px 14px;background:#F2F6FB;border-left:5px solid #5A8FCC;color:#1F4E8C;border-radius:4px;font-weight:700}
+p.lead{color:#555;margin:0 0 24px;font-size:0.95rem;line-height:1.65}
+
+/* 使い方ボックス */
+.guide{border:1px solid #BBD2EA;background:#FAFCFF;border-radius:12px;padding:22px 20px;margin:20px 0 28px}
+.guide h3{font-size:1.15rem;margin:0 0 16px;color:#1F4E8C;font-weight:700}
+.guide p{margin:0 0 14px;color:#333;font-size:0.97rem;line-height:1.8}
+.guide ol{margin:14px 0;padding-left:0;list-style:none;counter-reset:steps}
+.guide ol li{counter-increment:steps;padding:10px 0 10px 38px;position:relative;font-size:0.97rem;color:#333}
+.guide ol li::before{content:counter(steps);position:absolute;left:0;top:10px;width:28px;height:28px;background:#5A8FCC;color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:700;font-size:0.88rem}
+.guide .hl{color:#1F4E8C;font-weight:700}
+
+/* タブ */
+.tabs{display:flex;gap:6px;margin:20px 0 16px;position:sticky;top:0;background:#fff;padding:10px 0;z-index:10;border-bottom:1px solid #eee}
+.tab{flex:1;padding:16px 8px;font-size:1rem;background:#F5F5F5;color:#333;border:none;border-radius:8px;cursor:pointer;font-weight:600;min-height:50px}
+.tab.active{background:#5A8FCC;color:#fff}
+
+.section{display:none}
+.section.active{display:block}
+
+/* チェックリスト */
+.cat-label{font-size:0.92rem;color:#1F4E8C;font-weight:700;margin:26px 0 12px;letter-spacing:0.05em;border-bottom:2px solid #BBD2EA;padding-bottom:8px}
+.item{display:block;border:1px solid #E5E9F0;border-radius:10px;margin-bottom:10px;background:#fff;transition:background 0.15s}
+.item:active{background:#F8FAFD}
+.item label{display:flex;align-items:center;gap:14px;cursor:pointer;padding:16px 14px;font-size:1rem;line-height:1.5;min-height:58px}
+.item input[type=checkbox]{width:28px;height:28px;flex-shrink:0;accent-color:#5A8FCC;cursor:pointer;margin:0}
+.item.done label{color:#888}
+.item.done label .text{text-decoration:line-through}
+
+/* リセットなどのツール */
+.tools{display:flex;gap:10px;margin:14px 0 20px;flex-wrap:wrap}
+.tools button{flex:1;min-width:140px;padding:14px;font-size:0.95rem;background:#fff;color:#1F4E8C;border:1.5px solid #5A8FCC;border-radius:8px;cursor:pointer;min-height:48px;font-weight:600}
+.tools button:active{background:#F2F6FB}
+
+/* 注意 */
+.notice{background:#FFF8E1;border:1px solid #F5C842;color:#7A5A00;padding:12px 14px;border-radius:8px;font-size:0.85rem;margin:14px 0;line-height:1.6}
+
+/* グラフ */
+.chart-card{border:1px solid #BBD2EA;background:#fff;border-radius:12px;padding:16px 14px 12px;margin:16px 0 22px;box-shadow:0 1px 3px rgba(90,143,204,0.05)}
+.chart-title{font-size:1rem;color:#1F4E8C;font-weight:700;margin:0 0 8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.chart-meta{font-size:0.82rem;color:#666;font-weight:400}
+.chart-wrap{position:relative;width:100%;height:260px}
+.chart-empty{text-align:center;color:#999;padding:60px 16px;font-size:0.9rem}
+
+/* 記録シート */
+.print-tip{font-size:0.88rem;color:#555;margin:10px 0;padding:10px 14px;background:#F5F5F5;border-radius:6px;line-height:1.6}
+table.record{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.9rem}
+table.record th,table.record td{border:1px solid #D5D9E0;padding:8px 6px;text-align:center;vertical-align:middle}
+table.record th{background:#F2F6FB;color:#1F4E8C;font-weight:700;font-size:0.83rem;padding:10px 4px}
+table.record td.date{font-weight:600;width:18%;background:#FAFAFA}
+table.record input[type=text],table.record input[type=number]{width:100%;border:none;padding:8px 4px;font-size:16px;background:transparent;text-align:center;outline:none;min-width:0;min-height:38px}
+table.record input[type=text]:focus,table.record input[type=number]:focus{background:#FFF8E1}
+table.record input[type=number]::-webkit-inner-spin-button,table.record input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+table.record input[type=number]{-moz-appearance:textfield}
+table.record input[type=checkbox]{width:24px;height:24px;accent-color:#27AE60;cursor:pointer}
+
+footer{margin:48px 0 16px;padding:18px;text-align:center;color:#999;font-size:0.82rem;border-top:1px solid #eee}
+
+@media print{
+  .tabs,.tools{display:none!important}
+  .section{display:block!important;page-break-inside:auto}
+  .guide,.chart-card{break-inside:avoid}
+  body{padding:0;font-size:11pt;max-width:100%}
+  .item{break-inside:avoid;page-break-inside:avoid}
+  table.record{font-size:10pt}
+  table.record input[type=text],table.record input[type=number]{border-bottom:1px solid #999}
+  h2{background:none;border-left:3px solid #333;color:#000}
+  .guide{border:1px solid #999;background:none}
+  .chart-card{border:1px solid #999}
+}
+
+/* LINE導線 */
+.line-cta{margin:40px 0 24px;padding:26px 20px;border:2px solid #5A8FCC;background:#fff;border-radius:14px;text-align:center;box-shadow:0 2px 10px rgba(90,143,204,0.08)}
+.line-cta h2{display:inline-block;margin:0 0 14px;padding:8px 20px;background:#5A8FCC;color:#fff;border:none;border-left:none;font-size:1.12rem;border-radius:24px}
+.line-cta .cta-lead{margin:0 0 18px;padding:14px 16px;background:#FFF8E8;border:1px solid #F2D58A;border-radius:10px;font-size:0.97rem;color:#3A2F00;line-height:1.8;font-weight:600;text-align:left}
+.line-cta .cta-lead .em{color:#C73A00}
+.line-cta p.cta-desc{margin:0 0 16px;font-size:0.93rem;color:#444;line-height:1.7;text-align:left}
+.line-cta .qr-label{font-size:0.85rem;color:#1F4E8C;font-weight:700;margin:8px 0 4px}
+.line-cta .qr{display:block;width:200px;max-width:80%;height:auto;margin:8px auto 14px;border:1px solid #E5E9F0;border-radius:8px;padding:8px;background:#fff}
+.line-cta .url-btn{display:inline-block;padding:18px 22px;background:#5A8FCC;color:#fff;text-decoration:none;border-radius:10px;font-size:1.05rem;font-weight:700;margin:6px 0 8px;min-width:260px;min-height:56px;line-height:1.3;word-break:break-all;box-shadow:0 3px 0 #4A7DB8}
+.line-cta .url-btn:active{background:#4A7DB8;box-shadow:0 1px 0 #4A7DB8;transform:translateY(2px)}
+.line-cta .url-text{display:block;font-size:0.78rem;color:#E0EAF7;margin-top:6px;font-weight:400;word-break:break-all}
+.line-cta .time-note{font-size:0.85rem;color:#1F4E8C;font-weight:700;margin:4px 0 14px}
+.line-cta .steps{text-align:left;background:#F8FBFF;border-radius:10px;padding:18px 20px;margin:18px auto 0;max-width:440px}
+.line-cta .steps .steps-title{font-size:0.95rem;color:#1F4E8C;font-weight:700;margin:0 0 12px;text-align:center}
+.line-cta .steps ol{margin:0;padding-left:0;list-style:none;counter-reset:lsteps}
+.line-cta .steps ol li{counter-increment:lsteps;padding:10px 0 10px 38px;position:relative;font-size:0.95rem;color:#333;line-height:1.6}
+.line-cta .steps ol li::before{content:counter(lsteps);position:absolute;left:0;top:10px;width:28px;height:28px;background:#5A8FCC;color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:700;font-size:0.85rem}
+.line-cta .last-push{margin:22px 0 4px;padding:14px 16px;background:#FFF1ED;border-left:4px solid #C73A00;border-radius:6px;font-size:0.95rem;color:#3A1A00;line-height:1.8;font-weight:700;text-align:left}
+@media print{
+  .line-cta{break-inside:avoid;border:1px solid #999;box-shadow:none}
+  .line-cta h2{background:none;color:#000;border:1px solid #333}
+  .line-cta .url-btn{background:none;color:#000;border:1px solid #333;box-shadow:none}
+  .line-cta .cta-lead,.line-cta .last-push{background:none;border:1px solid #999;color:#000}
+  .line-cta .url-text{color:#000}
+}
+</style>
+</head>
+<body>
+
+<h1>肩こり改善 30日実践特典</h1>
+<p class="lead">1日1つの行動と10秒の記録で、肩こり改善を続けるための特典ページです。</p>
+
+<div class="guide">
+  <h3>この特典の使い方</h3>
+
+  <p>肩こり改善で一番大事なのは、特別なことではありません。<br>小さな行動を続けることです。</p>
+  <p>このページでは、<br>「やったこと」と「肩の重さ」を毎日記録します。</p>
+
+  <ol>
+    <li>チェックリストから1つだけやる</li>
+    <li>朝の肩の重さを1〜10で入力</li>
+    <li>できた日はチェック</li>
+  </ol>
+  <p>これだけです。</p>
+
+  <p>そして一番大事なのが<span class="hl">「グラフ」</span>です。</p>
+  <p>毎日の数値がグラフで見えるようになると、<br>「良くなっているか」が一目で分かります。</p>
+
+  <p>肩こりは一気に治るものではありません。<br>少しずつ変わります。</p>
+  <p>だからこそ、<br><span class="hl">“見えること”が続ける力になります。</span></p>
+
+  <p class="hl">まずは30日、続けてください。</p>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-target="prompts">チェックリスト</button>
+  <button class="tab" data-target="record">30日記録＆グラフ</button>
+</div>
+
+<!-- ============ チェックリスト ============ -->
+<div id="prompts" class="section active">
+
+<div class="tools">
+  <button onclick="resetChecks()">チェックを全リセット</button>
+</div>
+
+<div class="notice">
+  チェック状態は<strong>ご利用端末（ブラウザ）にのみ保存</strong>されます。<br>
+  ブラウザ履歴の削除や別端末では引き継がれません。
+</div>
+
+<div id="promptList"></div>
+
+</div>
+
+<!-- ============ 30日記録＆グラフ ============ -->
+<div id="record" class="section">
+
+<h2>肩の重さ 30日推移グラフ</h2>
+<div class="chart-card">
+  <div class="chart-title">
+    朝の肩の重さ（1〜10）
+    <span class="chart-meta" id="chartMeta">入力した日が自動でプロットされます</span>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="weightChart"></canvas>
+    <div class="chart-empty" id="chartEmpty" style="display:none">まだデータがありません。下の表に「朝の重さ」を入力するとグラフが描かれます。</div>
+  </div>
+</div>
+
+<h2>30日記録シート</h2>
+<div class="print-tip">
+  📱 スマホで入力可／🖨 印刷もOK<br>
+  入力データは<strong>ブラウザ内のみ保存</strong>。ブラウザ削除で消えます。重要な記録は別途控えをお取りください。
+</div>
+
+<div class="tools">
+  <button onclick="resetRecord()">記録を全リセット</button>
+  <button onclick="window.print()">このシートを印刷</button>
+</div>
+
+<table class="record" id="recordTable">
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>朝の重さ<br>(1〜10)</th>
+      <th>実施<br>✔</th>
+      <th>メモ</th>
+    </tr>
+  </thead>
+  <tbody id="recordBody"></tbody>
+</table>
+
+</div>
+
+<section class="line-cta" aria-label="LINE登録のご案内">
+  <h2>無料特典の受け取りはこちら</h2>
+
+  <div class="cta-lead">
+    <span class="em">今のうちに受け取っておかないと、</span><br>
+    あとで探すのが面倒になります。<br><br>
+    LINE登録して「肩こり」と送るだけで、<br>
+    すぐに特典ページのURLが届きます。<br><br>
+    <span class="em">操作は1分もかかりません。</span>
+  </div>
+
+  <p class="cta-desc">
+    この特典は、LINEから受け取る形式になっています。<br><br>
+    登録後にキーワードを送るだけで、<br>
+    特典ページのURLが自動で届きます。
+  </p>
+
+  <div class="qr-label">▼ QRコードを読み取る</div>
+  <a href="https://lin.ee/oRSnIrx" target="_blank" rel="noopener">
+    <img class="qr" src="LINEQRコード_くらしラボ.png" alt="公式LINE QRコード">
+  </a>
+
+  <div class="qr-label">▼ スマホの方はタップ</div>
+  <a class="url-btn" href="https://lin.ee/oRSnIrx" target="_blank" rel="noopener">
+    LINEで友だち追加（無料・1分）
+    <span class="url-text">https://lin.ee/oRSnIrx</span>
+  </a>
+
+  <div class="time-note">⏱ 登録〜受け取りまで 約1分</div>
+
+  <div class="steps">
+    <div class="steps-title">受け取り手順</div>
+    <ol>
+      <li>QRコードまたはURLからLINEを友達追加</li>
+      <li>トーク画面で「肩こり」と送信</li>
+      <li>特典ページのURLが自動で届く</li>
+      <li>URLを開いて特典を利用する</li>
+    </ol>
+  </div>
+
+  <div class="last-push">
+    迷っている間に後回しになります。<br><br>
+    今のうちに受け取っておいてください。
+  </div>
+</section>
+
+<footer>
+  © 肩こり改善 1日5分で変わる習慣 — 30日実践特典
+</footer>
+
+<!-- Chart.js (CDN, 単一ファイル) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<script>
+// ============ チェックリストデータ ============
+const PROMPTS = [
+  // 朝の習慣
+  { cat: "朝の習慣", text: "起きたらベッドの上で背伸びを3回したか？" },
+  { cat: "朝の習慣", text: "首をゆっくり右回り2回・左回り2回まわしたか？" },
+  { cat: "朝の習慣", text: "寝た姿勢のまま両膝を左右にゆっくり倒したか？" },
+  { cat: "朝の習慣", text: "肩を耳まで上げて、ストンと落としたか？" },
+  { cat: "朝の習慣", text: "起きてすぐ、コップ1杯の水を飲んだか？" },
+  { cat: "朝の習慣", text: "今日の予定の中で「5分の習慣をどこに入れるか」決めたか？" },
+
+  // 仕事中
+  { cat: "仕事中", text: "30分に1回、姿勢をリセットしたか？" },
+  { cat: "仕事中", text: "あごを後ろに引いて二重あごを5秒キープ×5回したか？" },
+  { cat: "仕事中", text: "モニターは目線の高さにあるか？" },
+  { cat: "仕事中", text: "椅子に深く座り、坐骨で座っているか？" },
+  { cat: "仕事中", text: "両足の裏をしっかり床につけているか？" },
+  { cat: "仕事中", text: "肩がすくんでいないか、今すぐチェックしたか？" },
+  { cat: "仕事中", text: "1時間以上、同じ姿勢で固まっていないか？" },
+  { cat: "仕事中", text: "目を閉じて10秒、深呼吸したか？" },
+  { cat: "仕事中", text: "肩甲骨を5回、大きく回したか？" },
+
+  // 夜・寝る前
+  { cat: "夜・寝る前", text: "湯船に15分、ぬるめのお湯で浸かったか？" },
+  { cat: "夜・寝る前", text: "タオルストレッチを3分やったか？" },
+  { cat: "夜・寝る前", text: "ベッドの上で4秒吸って8秒吐く呼吸を5回したか？" },
+  { cat: "夜・寝る前", text: "枕の高さは首と背中が一直線になっているか？" },
+  { cat: "夜・寝る前", text: "寝る1時間前にスマホを置いたか？" },
+  { cat: "夜・寝る前", text: "今日の自分に「お疲れさま」と一言つぶやいたか？" },
+
+  // 習慣化のコツ
+  { cat: "習慣化のコツ", text: "新しい習慣を、すでにある行動の直後にくっつけたか？" },
+  { cat: "習慣化のコツ", text: "今日の習慣は「2分以内」で終わる小ささに設計したか？" },
+  { cat: "習慣化のコツ", text: "30分タイマーをスマホ・PCに設定したか？" },
+  { cat: "習慣化のコツ", text: "今日の肩のこり度を数字（1〜10）で記録したか？" },
+  { cat: "習慣化のコツ", text: "「いつ・どこで・何の前後にやるか」を決めたか？" },
+  { cat: "習慣化のコツ", text: "1週間に1回、横向き写真で姿勢を記録したか？" },
+
+  // 挫折防止
+  { cat: "挫折防止", text: "今日できなくても、明日やればOK。2日連続で休まないと決めたか？" },
+  { cat: "挫折防止", text: "完璧を目指さず「今日は1つだけ」でOKにしたか？" },
+  { cat: "挫折防止", text: "挫折しそうなとき、最小単位（呼吸1回でも）に戻したか？" },
+  { cat: "挫折防止", text: "肩こりが軽くなった瞬間を、忘れずに味わったか？" },
+  { cat: "挫折防止", text: "周りの誰か1人に、肩こり改善に取り組んでいることを宣言したか？" },
+  { cat: "挫折防止", text: "強い痛みやしびれが2週間以上続いていないか確認したか？" }
+];
+
+// ============ タブ切替 ============
+const tabs = document.querySelectorAll(".tab");
+tabs.forEach(t => t.addEventListener("click", () => {
+  tabs.forEach(x => x.classList.remove("active"));
+  t.classList.add("active");
+  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+  document.getElementById(t.dataset.target).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "instant" });
+  if (t.dataset.target === "record" && weightChart) {
+    weightChart.resize();
+  }
+}));
+
+// ============ チェックリスト ============
+const STORAGE_KEY = "katakori_checks_v1";
+function loadChecks() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+  catch { return {}; }
+}
+function saveChecks(map) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(map)); } catch {}
+}
+let checkMap = loadChecks();
+
+function renderPrompts() {
+  const list = document.getElementById("promptList");
+  list.innerHTML = "";
+  const groups = {};
+  PROMPTS.forEach((p, i) => {
+    if (!groups[p.cat]) groups[p.cat] = [];
+    groups[p.cat].push({ ...p, idx: i });
+  });
+  Object.keys(groups).forEach(cat => {
+    const label = document.createElement("div");
+    label.className = "cat-label";
+    label.textContent = "▼ " + cat;
+    list.appendChild(label);
+    groups[cat].forEach(p => {
+      const item = document.createElement("div");
+      item.className = "item" + (checkMap[p.idx] ? " done" : "");
+      const lbl = document.createElement("label");
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = !!checkMap[p.idx];
+      cb.addEventListener("change", () => {
+        checkMap[p.idx] = cb.checked;
+        saveChecks(checkMap);
+        item.classList.toggle("done", cb.checked);
+      });
+      const span = document.createElement("span");
+      span.className = "text";
+      span.textContent = p.text;
+      lbl.appendChild(cb);
+      lbl.appendChild(span);
+      item.appendChild(lbl);
+      list.appendChild(item);
+    });
+  });
+}
+
+function resetChecks() {
+  if (!confirm("チェック状態をすべてリセットします。よろしいですか？")) return;
+  checkMap = {};
+  saveChecks(checkMap);
+  renderPrompts();
+}
+
+// ============ 30日記録シート ============
+const RECORD_KEY = "katakori_record_v1";
+function loadRecord() {
+  try { return JSON.parse(localStorage.getItem(RECORD_KEY) || "{}"); }
+  catch { return {}; }
+}
+function saveRecord(map) {
+  try { localStorage.setItem(RECORD_KEY, JSON.stringify(map)); } catch {}
+}
+let recordMap = loadRecord();
+
+function renderRecord() {
+  const tbody = document.getElementById("recordBody");
+  tbody.innerHTML = "";
+  for (let day = 1; day <= 30; day++) {
+    const tr = document.createElement("tr");
+    const data = recordMap[day] || { date: "", weight: "", done: false, memo: "" };
+
+    const tdDate = document.createElement("td");
+    tdDate.className = "date";
+    const dateInput = document.createElement("input");
+    dateInput.type = "text";
+    dateInput.placeholder = "Day " + day;
+    dateInput.value = data.date;
+    dateInput.addEventListener("input", e => {
+      data.date = e.target.value;
+      recordMap[day] = data;
+      saveRecord(recordMap);
+    });
+    tdDate.appendChild(dateInput);
+
+    const tdWeight = document.createElement("td");
+    const weightInput = document.createElement("input");
+    weightInput.type = "number";
+    weightInput.inputMode = "numeric";
+    weightInput.min = "1";
+    weightInput.max = "10";
+    weightInput.placeholder = "-";
+    weightInput.value = data.weight;
+    weightInput.addEventListener("input", e => {
+      let v = e.target.value;
+      if (v !== "") {
+        const n = parseInt(v, 10);
+        if (isNaN(n) || n < 1) v = "1";
+        else if (n > 10) v = "10";
+        else v = String(n);
+        if (v !== e.target.value) e.target.value = v;
+      }
+      data.weight = v;
+      recordMap[day] = data;
+      saveRecord(recordMap);
+      updateChart();
+    });
+    tdWeight.appendChild(weightInput);
+
+    const tdDone = document.createElement("td");
+    const doneInput = document.createElement("input");
+    doneInput.type = "checkbox";
+    doneInput.checked = !!data.done;
+    doneInput.addEventListener("change", e => {
+      data.done = e.target.checked;
+      recordMap[day] = data;
+      saveRecord(recordMap);
+    });
+    tdDone.appendChild(doneInput);
+
+    const tdMemo = document.createElement("td");
+    const memoInput = document.createElement("input");
+    memoInput.type = "text";
+    memoInput.placeholder = "ひとこと";
+    memoInput.value = data.memo;
+    memoInput.addEventListener("input", e => {
+      data.memo = e.target.value;
+      recordMap[day] = data;
+      saveRecord(recordMap);
+    });
+    tdMemo.appendChild(memoInput);
+
+    tr.appendChild(tdDate);
+    tr.appendChild(tdWeight);
+    tr.appendChild(tdDone);
+    tr.appendChild(tdMemo);
+    tbody.appendChild(tr);
+  }
+}
+
+function resetRecord() {
+  if (!confirm("30日記録シートとグラフの内容をすべてリセットします。よろしいですか？")) return;
+  recordMap = {};
+  saveRecord(recordMap);
+  renderRecord();
+  updateChart();
+}
+
+// ============ グラフ（Chart.js） ============
+let weightChart = null;
+
+function getChartData() {
+  const labels = [];
+  const data = [];
+  for (let day = 1; day <= 30; day++) {
+    labels.push("Day " + day);
+    const d = recordMap[day];
+    const v = d && d.weight !== "" && d.weight != null ? parseInt(d.weight, 10) : null;
+    data.push(isNaN(v) ? null : v);
+  }
+  return { labels, data };
+}
+
+function initChart() {
+  const ctx = document.getElementById("weightChart").getContext("2d");
+  const { labels, data } = getChartData();
+  weightChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [{
+        label: "朝の肩の重さ",
+        data,
+        borderColor: "#5A8FCC",
+        backgroundColor: "rgba(90,143,204,0.15)",
+        borderWidth: 2.5,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: "#fff",
+        pointBorderColor: "#5A8FCC",
+        pointBorderWidth: 2,
+        tension: 0.25,
+        spanGaps: true,
+        fill: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: "rgba(31,78,140,0.92)",
+          padding: 10,
+          titleFont: { size: 13 },
+          bodyFont: { size: 13 },
+          callbacks: {
+            title: items => items[0].label,
+            label: ctx => "重さ: " + ctx.parsed.y + " / 10"
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: 0, max: 10,
+          ticks: { stepSize: 2, font: { size: 11 } },
+          grid: { color: "#EEF2F7" },
+          title: { display: true, text: "軽い ← 1   10 → 重い", font: { size: 11 }, color: "#666" }
+        },
+        x: {
+          ticks: {
+            autoSkip: true, maxRotation: 0, font: { size: 10 },
+            callback: function(val, idx) { return (idx % 3 === 0) ? this.getLabelForValue(val) : ""; }
+          },
+          grid: { display: false }
+        }
+      },
+      interaction: { intersect: false, mode: "nearest" },
+      animation: { duration: 350 }
+    }
+  });
+  updateEmptyState();
+}
+
+function updateChart() {
+  if (!weightChart) return;
+  const { data } = getChartData();
+  weightChart.data.datasets[0].data = data;
+  weightChart.update("none");
+  updateEmptyState();
+}
+
+function updateEmptyState() {
+  const { data } = getChartData();
+  const hasAny = data.some(v => v !== null);
+  const empty = document.getElementById("chartEmpty");
+  const canvas = document.getElementById("weightChart");
+  const meta = document.getElementById("chartMeta");
+  if (hasAny) {
+    empty.style.display = "none";
+    canvas.style.display = "block";
+    const valid = data.filter(v => v !== null);
+    const avg = (valid.reduce((a, b) => a + b, 0) / valid.length).toFixed(1);
+    meta.textContent = "記録 " + valid.length + " 日 / 平均 " + avg;
+  } else {
+    empty.style.display = "block";
+    canvas.style.display = "none";
+    meta.textContent = "入力した日が自動でプロットされます";
+  }
+}
+
+// 初期描画
+renderPrompts();
+renderRecord();
+
+// Chart.js 読込待ち
+function bootChart() {
+  if (typeof Chart === "undefined") {
+    setTimeout(bootChart, 100);
+    return;
+  }
+  initChart();
+}
+bootChart();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>欲望チェックシート</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0f0f0f;
+    --white: #fcfcf8;
+    --yellow: #ffd600;
+    --grey-dark: #505050;
+    --grey-mid: #969690;
+    --grey-light: #dcdcd7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white);
+    width: 794px;
+    min-height: 1123px;
+    padding: 0;
+    color: var(--black);
+  }
+
+  /* ── トップバー ── */
+  .top-bar-black { height: 8px; background: var(--black); }
+  .top-bar-yellow { height: 5px; background: var(--yellow); }
+
+  /* ── ヘッダー ── */
+  .header {
+    padding: 20px 48px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .series-label {
+    font-size: 11px;
+    color: var(--grey-mid);
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .main-title {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .main-title span {
+    display: block;
+    font-size: 28px;
+    margin-top: 2px;
+  }
+
+  .yellow-line {
+    height: 4px;
+    width: 240px;
+    background: var(--yellow);
+    margin: 10px 0 8px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    color: var(--grey-dark);
+    line-height: 1.6;
+  }
+
+  /* ドパキャラクター */
+  .dopa {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── 使い方ガイド ── */
+  .guide-box {
+    margin: 12px 48px;
+    background: var(--black);
+    padding: 10px 16px;
+    border-radius: 2px;
+  }
+
+  .guide-box p:first-child {
+    font-size: 11px;
+    color: var(--yellow);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .guide-box p:last-child {
+    font-size: 11px;
+    color: #e0e0da;
+    line-height: 1.5;
+  }
+
+  /* ── セパレーター ── */
+  .separator {
+    height: 1px;
+    background: var(--black);
+    margin: 0 48px 12px;
+  }
+
+  /* ── チェックシートグリッド ── */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 0 48px;
+  }
+
+  .card {
+    border: 1px solid var(--grey-light);
+    padding: 8px 10px 8px 14px;
+    position: relative;
+    background: var(--white);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--yellow);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .card-num {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--grey-mid);
+    font-weight: 700;
+  }
+
+  .card-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+  }
+
+  .card-sub {
+    font-size: 10px;
+    color: var(--grey-mid);
+    margin-left: auto;
+  }
+
+  .card-divider {
+    height: 1px;
+    background: var(--grey-light);
+    margin-bottom: 7px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin-bottom: 5px;
+    font-size: 10.5px;
+    color: var(--grey-dark);
+    line-height: 1.4;
+  }
+
+  .checkbox {
+    width: 11px;
+    height: 11px;
+    border: 1px solid var(--grey-dark);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── リザルトバー ── */
+  .result-bar {
+    margin: 12px 48px 8px;
+    background: var(--black);
+    padding: 8px 16px;
+  }
+
+  .result-bar .label {
+    font-size: 10px;
+    color: var(--yellow);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 3px;
+  }
+
+  .result-bar .text {
+    font-size: 10px;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  /* ── フッター ── */
+  .footer {
+    padding: 8px 48px;
+    border-top: 1px solid var(--grey-light);
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--grey-mid);
+    margin-top: 8px;
+  }
+
+  .bottom-bar { height: 6px; background: var(--black); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<div class="top-bar-black"></div>
+<div class="top-bar-yellow"></div>
+
+<div class="header">
+  <div>
+    <p class="series-label">人間の欲望図鑑①　READER BONUS ①</p>
+    <h1 class="main-title">
+      あなたはどの欲望に弱い？
+      <span>欲望チェックシート</span>
+    </h1>
+    <div class="yellow-line"></div>
+    <p class="subtitle">当てはまる項目にチェックを入れてください。最も多いタイプがあなたの欲望タイプです。</p>
+  </div>
+  <svg class="dopa" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="44" r="30" fill="#FFD600" stroke="#0f0f0f" stroke-width="2.5"/>
+    <ellipse cx="30" cy="36" rx="5" ry="6" fill="#0f0f0f"/>
+    <ellipse cx="50" cy="36" rx="5" ry="6" fill="#0f0f0f"/>
+    <circle cx="40" cy="44" r="3" fill="#0f0f0f"/>
+    <path d="M32 52 Q40 58 48 52" stroke="#0f0f0f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <polygon points="26,16 30,4 34,16" fill="#0f0f0f"/>
+    <polygon points="46,16 50,4 54,16" fill="#0f0f0f"/>
+  </svg>
+</div>
+
+<div class="guide-box">
+  <p>【この特典の使い方】本を読み終えた今がベストタイミング。</p>
+  <p>自分の欲望タイプに「名前」をつけると、次に負けそうな瞬間に気づけるようになります。</p>
+</div>
+
+<div class="separator"></div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">01</span>
+      <span class="card-name">現在バイアス型</span>
+      <span class="card-sub">今すぐ快楽を求める</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>「あとで節約すればいい」とよく思う</div>
+    <div class="check-item"><div class="checkbox"></div>衝動買いをして後悔することがある</div>
+    <div class="check-item"><div class="checkbox"></div>目の前の誘惑より将来の貯金を優先できない</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">02</span>
+      <span class="card-name">損失回避型</span>
+      <span class="card-sub">失うことが怖い</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>使っていないサブスクを解約できない</div>
+    <div class="check-item"><div class="checkbox"></div>「もったいない」という理由で捨てられないものがある</div>
+    <div class="check-item"><div class="checkbox"></div>損するかもしれないと思うと行動が止まる</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">03</span>
+      <span class="card-name">アンカリング型</span>
+      <span class="card-sub">最初の数字に引きずられる</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>元値を見ると「お得」と感じてしまう</div>
+    <div class="check-item"><div class="checkbox"></div>定価を見た後の割引価格に弱い</div>
+    <div class="check-item"><div class="checkbox"></div>必要かどうかより「いくら安いか」を考えてしまう</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">04</span>
+      <span class="card-name">希少性バイアス型</span>
+      <span class="card-sub">限定に弱い</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>「残りわずか」「期間限定」の表示に焦る</div>
+    <div class="check-item"><div class="checkbox"></div>限定品と聞くと欲しくなる</div>
+    <div class="check-item"><div class="checkbox"></div>タイムセールのカウントダウンに急かされる</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">05</span>
+      <span class="card-name">承認欲求型</span>
+      <span class="card-sub">他者に認められたい</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>ブランド品を持つと気分が上がる</div>
+    <div class="check-item"><div class="checkbox"></div>SNSの「いいね」が気になる</div>
+    <div class="check-item"><div class="checkbox"></div>人から褒められるために行動することがある</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">06</span>
+      <span class="card-name">正当化バイアス型</span>
+      <span class="card-sub">言い訳が得意</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>「今日は特別」「頑張ったから」とよく思う</div>
+    <div class="check-item"><div class="checkbox"></div>買った後に理由を考えることがある</div>
+    <div class="check-item"><div class="checkbox"></div>ご褒美の頻度が増えてきていると感じる</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">07</span>
+      <span class="card-name">社会的比較型</span>
+      <span class="card-sub">他人と比べてしまう</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>友人の投稿を見て焦ることがある</div>
+    <div class="check-item"><div class="checkbox"></div>周りが持っているものが欲しくなる</div>
+    <div class="check-item"><div class="checkbox"></div>自分より良い生活をしている人が気になる</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">08</span>
+      <span class="card-name">ドーパミン依存型</span>
+      <span class="card-sub">刺激を求め続ける</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>新しいものを買うと一時的に気分が上がる</div>
+    <div class="check-item"><div class="checkbox"></div>同じ刺激では満足できなくなってきた</div>
+    <div class="check-item"><div class="checkbox"></div>ショッピング自体が目的になることがある</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">09</span>
+      <span class="card-name">サンクコスト型</span>
+      <span class="card-sub">やめられない</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>払ってしまったからと続けることがある</div>
+    <div class="check-item"><div class="checkbox"></div>途中でやめると損した気がする</div>
+    <div class="check-item"><div class="checkbox"></div>始めたことをやめる決断が苦手だ</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">10</span>
+      <span class="card-name">相対的剥奪型</span>
+      <span class="card-sub">SNSで焦る</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="check-item"><div class="checkbox"></div>他人の豊かさを見ると自分が劣って見える</div>
+    <div class="check-item"><div class="checkbox"></div>SNSを見た後に何か買いたくなることがある</div>
+    <div class="check-item"><div class="checkbox"></div>「映える」ことを意識した消費をしている</div>
+  </div>
+
+</div>
+
+<div class="result-bar">
+  <p class="label">RESULT GUIDE</p>
+  <p class="text">チェックが最も多いタイプ → あなたの欲望タイプ　｜　同数の場合 → 複合型（最もハードモード）</p>
+</div>
+
+<div class="footer">
+  <span>くらしラボ出版　／　人間の欲望図鑑①　読者特典</span>
+  <span>© Deko Madonna</span>
+</div>
+<div class="bottom-bar"></div>
+
+</body>
+</html>

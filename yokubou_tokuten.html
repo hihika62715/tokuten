@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人間の欲望図鑑① 読者特典</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0d0d;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",sans-serif;min-height:100vh}
+
+.header{background:#111;padding:16px 20px;text-align:center;border-bottom:3px solid #c8a800}
+.header h1{font-size:1rem;font-weight:700;color:#c8a800;letter-spacing:0.05em}
+.header p{font-size:0.8rem;color:#999;margin-top:4px}
+
+.tabs{display:flex;background:#111;border-bottom:1px solid #333}
+.tab{flex:1;padding:14px 8px;text-align:center;font-size:0.82rem;font-weight:700;color:#888;cursor:pointer;border-bottom:3px solid transparent;transition:all 0.2s;line-height:1.4}
+.tab.active{color:#c8a800;border-bottom-color:#c8a800;background:#1a1a1a}
+.tab:hover:not(.active){color:#ccc;background:#161616}
+
+.frame-wrap{width:100%;height:calc(100vh - 110px)}
+.frame-wrap iframe{width:100%;height:100%;border:none;background:#fff}
+.panel{display:none}
+.panel.active{display:block;height:calc(100vh - 110px)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>人間の欲望図鑑① 読者特典</h1>
+  <p>タブを切り替えて3つの特典をご利用ください</p>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="show(0)">①<br>チェックシート</div>
+  <div class="tab" onclick="show(1)">②<br>日記シート</div>
+  <div class="tab" onclick="show(2)">③<br>キーワード集</div>
+</div>
+
+<div class="panel active" id="p0">
+  <div class="frame-wrap"><iframe src="01_checksheet.html" loading="lazy"></iframe></div>
+</div>
+<div class="panel" id="p1">
+  <div class="frame-wrap"><iframe src="02_diary.html" loading="lazy"></iframe></div>
+</div>
+<div class="panel" id="p2">
+  <div class="frame-wrap"><iframe src="03_keywords.html" loading="lazy"></iframe></div>
+</div>
+
+<script>
+function show(n){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  document.querySelectorAll('.panel').forEach((p,i)=>p.classList.toggle('active',i===n));
+}
+</script>
+</body>
+</html>

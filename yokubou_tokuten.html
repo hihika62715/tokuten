@@ -6,21 +6,27 @@
 <title>人間の欲望図鑑① 読者特典</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#0d0d0d;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",sans-serif;min-height:100vh}
+body{background:#0d0d0d;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",sans-serif;overflow-x:hidden}
 
 .header{background:#111;padding:16px 20px;text-align:center;border-bottom:3px solid #c8a800}
 .header h1{font-size:1rem;font-weight:700;color:#c8a800;letter-spacing:0.05em}
 .header p{font-size:0.8rem;color:#999;margin-top:4px}
 
 .tabs{display:flex;background:#111;border-bottom:1px solid #333}
-.tab{flex:1;padding:14px 8px;text-align:center;font-size:0.82rem;font-weight:700;color:#888;cursor:pointer;border-bottom:3px solid transparent;transition:all 0.2s;line-height:1.4}
+.tab{flex:1;padding:14px 8px;text-align:center;font-size:0.82rem;font-weight:700;color:#888;cursor:pointer;border-bottom:3px solid transparent;line-height:1.4}
 .tab.active{color:#c8a800;border-bottom-color:#c8a800;background:#1a1a1a}
-.tab:hover:not(.active){color:#ccc;background:#161616}
 
-.frame-wrap{width:100%;height:calc(100vh - 110px)}
-.frame-wrap iframe{width:100%;height:100%;border:none;background:#fff}
 .panel{display:none}
-.panel.active{display:block;height:calc(100vh - 110px)}
+.panel.active{display:block}
+
+.frame-wrap{overflow:hidden;width:100%}
+.frame-wrap iframe{
+  border:none;
+  background:#fff;
+  width:794px;
+  transform-origin:0 0;
+  display:block;
+}
 </style>
 </head>
 <body>
@@ -37,20 +43,46 @@ body{background:#0d0d0d;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFo
 </div>
 
 <div class="panel active" id="p0">
-  <div class="frame-wrap"><iframe src="01_checksheet.html" loading="lazy"></iframe></div>
+  <div class="frame-wrap" id="w0">
+    <iframe src="01_checksheet.html" id="f0" scrolling="no" onload="fitFrame(this)"></iframe>
+  </div>
 </div>
 <div class="panel" id="p1">
-  <div class="frame-wrap"><iframe src="02_diary.html" loading="lazy"></iframe></div>
+  <div class="frame-wrap" id="w1">
+    <iframe src="02_diary.html" id="f1" scrolling="no" onload="fitFrame(this)"></iframe>
+  </div>
 </div>
 <div class="panel" id="p2">
-  <div class="frame-wrap"><iframe src="03_keywords.html" loading="lazy"></iframe></div>
+  <div class="frame-wrap" id="w2">
+    <iframe src="03_keywords.html" id="f2" scrolling="no" onload="fitFrame(this)"></iframe>
+  </div>
 </div>
 
 <script>
-function show(n){
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===n));
-  document.querySelectorAll('.panel').forEach((p,i)=>p.classList.toggle('active',i===n));
+var CONTENT_W = 794;
+
+function fitFrame(iframe) {
+  var scale = Math.min(1, window.innerWidth / CONTENT_W);
+  var doc = iframe.contentDocument || iframe.contentWindow.document;
+  var h = doc.body ? doc.body.scrollHeight : 1200;
+  iframe.style.transform = 'scale(' + scale + ')';
+  iframe.style.height = h + 'px';
+  iframe.parentElement.style.height = Math.ceil(h * scale) + 'px';
 }
+
+function show(n) {
+  document.querySelectorAll('.tab').forEach(function(t,i){t.classList.toggle('active',i===n);});
+  document.querySelectorAll('.panel').forEach(function(p,i){p.classList.toggle('active',i===n);});
+  var iframe = document.getElementById('f'+n);
+  if(iframe) fitFrame(iframe);
+}
+
+window.addEventListener('resize', function(){
+  [0,1,2].forEach(function(i){
+    var f = document.getElementById('f'+i);
+    if(f) fitFrame(f);
+  });
+});
 </script>
 </body>
 </html>
